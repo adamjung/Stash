@@ -4,7 +4,9 @@
   "description": "collect items from your favorite sites",
   "main": "index.js",
   "dependencies": {
+    "bluebird": "^3.4.7",
     "lodash": "^4.17.4",
+    "mongoose": "^4.8.2",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
