@@ -1,0 +1,37 @@
+{
+  "name": "stash",
+  "version": "1.0.0",
+  "description": "collect items from your favorite sites",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamjung/Stash.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "new",
+    "items",
+    "menswear",
+    "streetwear",
+    "single",
+    "page",
+    "app"
+  ],
+  "author": "atom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamjung/Stash/issues"
+  },
+  "homepage": "https://github.com/adamjung/Stash#readme"
+}
