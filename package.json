@@ -4,7 +4,16 @@
   "description": "collect items from your favorite sites",
   "main": "index.js",
   "dependencies": {
-    "lodash": "^4.17.4",
+    "bluebird": "^3.4.7",
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "knex": "^0.12.6",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0",
+    "objection": "^0.6.2",
+    "pg": "^6.1.2",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
