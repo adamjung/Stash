@@ -14,7 +14,11 @@ node_modules/
 
 # Logs
 logs
+logfile
 *.log
+
+# local dev database
+stash_dev/
 
 # Runtime data
 pids
