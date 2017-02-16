@@ -2,6 +2,7 @@ const url = require('url');
 const dbot = require('../../config/diffbot.js');
 const newUrls = require('../../config/newProductUrlHash.js');
 const request = require('request-promise');
+const helpers = require('./helpers/scrapeHelpers');
 
 module.exports = function(app) {
   app.get('/newItems/:site', function(req, res, next) {
@@ -17,12 +18,19 @@ module.exports = function(app) {
       };
       request.get(options)
       .then(function(body) {
-        console.log('body is', body);
-        res.json(body);
+        var imgs = body.objects[0].images;
+        var texts = body.objects[0].descriptions;
+        var items = helpers.mapImgsTextsToItems(imgs, texts);
+
+        if (items === null) {
+          return res.send(500);
+        } else {
+          res.json(items);
+        }
       })
       .catch(function(error) {
-        console.log('error', response.statusCode);
-        res.send(response.statusCode);
+        console.log('error', res.statusCode);
+        res.send(res.statusCode);
       });
     }
   });
