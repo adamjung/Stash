@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval-source-map',
