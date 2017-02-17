@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import css from 'style.css';
 
 import StoreBar from './StoreBar.jsx';
 import ItemWindow from './ItemWindow.jsx';
