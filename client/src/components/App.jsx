@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import css from 'style.css';
 
 import StoreBar from './StoreBar.jsx';
 import ItemWindow from './ItemWindow.jsx';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     // props contains store
     super(props);
@@ -20,9 +21,3 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = function(state){
-  return {appStore: state};
-};
-
-module.exports = connect(mapStateToProps)(App);

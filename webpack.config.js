@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -20,6 +21,11 @@ module.exports = {
   ],
   module: {
     loaders: [
+      { 
+        test: /\.css$/, 
+        loaders: ['style-loader', 'css-loader'],
+        // include: /flexboxgrid/,
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -30,8 +36,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: "file?name=[name].[ext]",
       },
-    ]
+    ],
   },
-  // watch: true
 };
 
