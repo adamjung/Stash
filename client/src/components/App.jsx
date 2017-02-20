@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Navbar, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 // import css from 'style.css';
 
@@ -14,7 +15,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <div className="logo">Stash</div>
+        <Navbar>
+          <div className="title">Stash</div>
+        </Navbar>
         <StoreBar />
         <ItemWindow />
       </div>

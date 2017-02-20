@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import ItemEntry from './ItemEntry';
 import Spinner from 'react-spinkit';
 
+import { Grid, Row, Col } from 'react-bootstrap';
+import helpers from './utility/helpers'
+
 // export default class ItemWindow extends Component {
 class ItemWindow extends Component {
   constructor(props) {
@@ -19,11 +22,17 @@ class ItemWindow extends Component {
     } else {
       loadingSpinner = null;
       windowItems = (
-        <ul>
-          {this.props.itemList.map((item,index) =>
-            <ItemEntry details={item} key={index}/>
+        <Grid>
+          {this.props.itemList.map((row, rowIndex) => 
+            <Row className="itemWindowRow" key={rowIndex}>
+              {row.map((item, colIndex) =>
+                <Col xs={3} md={3} className="itemWindowCol" key={colIndex}>
+                  <ItemEntry details={item}/>
+                </Col>
+              )}
+            </Row>
           )}
-        </ul>
+        </Grid>
       );
     }
     
