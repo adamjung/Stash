@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Image } from 'react-bootstrap';
+
 
 export default class ItemEntry extends Component {
   constructor(props) {
@@ -8,7 +10,7 @@ export default class ItemEntry extends Component {
   render() {
     return (
       <div className="item-entry">
-        <img src={this.props.details.image}/>
+        <Image src={this.props.details.image} responsive/>
       </div>
     );
   }

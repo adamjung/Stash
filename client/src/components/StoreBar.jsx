@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { ButtonGroup, Button } from 'react-bootstrap';
+
 import axios from 'axios';
 import server from '../../config/serverInfo';
+import helpers from './utility/helpers'
 
 class StoreBar extends Component {
   constructor(props) {
@@ -19,16 +22,14 @@ class StoreBar extends Component {
     // fetch new items
     axios.get(url)
     .then(function(response) {
-      console.log('response is ',response);
       return response.data;
     })
     // dispatch new items to redux store
     .then(function(items) {
-      console.log('successful get from server');
       this.props.dispatch({
         type: 'UPDATE_CURRENT_SITE',
         site: name,
-        items: items,
+        items: helpers.formatArrayIntoGrid(items, 4),
       });
       this.props.dispatch({ type: 'FINISHED_LOADING' });
     }.bind(this))
@@ -41,13 +42,23 @@ class StoreBar extends Component {
   render() {
     return (
       // REFACTOR BELOW FOR DRY CODE
-      <div className="store-bar">
-        <button type="submit" className="storeBtn" onClick={() => (this.storeClick('haven'))}>Haven</button>
-        <button type="submit" className="storeBtn" onClick={() => (this.storeClick('ssense'))}>Ssense</button>
-        <button type="submit" className="storeBtn" onClick={() => (this.storeClick('mrPorter'))}>MrPorter</button>
-        <button type="submit" className="storeBtn" onClick={() => (this.storeClick('antonioli'))}>Antonioli</button>
-        <button type="submit" className="storeBtn" onClick={() => (this.storeClick('maasandstacks'))}>Maas&Stacks</button>
-      </div>
+      <ButtonGroup justified>
+        <ButtonGroup>
+          <Button type="submit" className="storeBtn" onClick={() => (this.storeClick('haven'))}>Haven</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button type="submit" className="storeBtn" onClick={() => (this.storeClick('ssense'))}>Ssense</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button type="submit" className="storeBtn" onClick={() => (this.storeClick('mrPorter'))}>MrPorter</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button type="submit" className="storeBtn" onClick={() => (this.storeClick('antonioli'))}>Antonioli</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button type="submit" className="storeBtn" onClick={() => (this.storeClick('maasandstacks'))}>Maas&Stacks</Button>
+        </ButtonGroup>
+      </ButtonGroup>
     );
   }
 }
