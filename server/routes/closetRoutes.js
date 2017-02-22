@@ -1,35 +1,31 @@
-const url = require('url');
-const request = require('request-promise');
-const helpers = require('./helpers/scrapeHelpers');
+const Item = require('../models/ItemModel');
 
 module.exports = function(app) {
-  app.get('/newItems/:site', function(req, res, next) {
-    var site = req.params.site;
-    var siteUrl = newUrls[site];
+  // for a user, get all their items
+  app.get('/items/:userId', function(req, res, next) {
+    Item
+    .query()
+    .where('userId', '=', req.params.userId)
+    .skipUndefined()
+    .then(function(items) { res.send(items); })
+    .catch(next);
+  });
 
-    if (siteUrl === undefined) {
-      return res.send(`${site}: is an unsupported/invalid website`);
-    } else {
-      var options = {
-        uri: `https://api.diffbot.com/v3/${site}?token=${dbot.DBK}&url=${siteUrl}`,
-        json: true // Automatically parse JSON string in response 
-      };
-      request.get(options)
-      .then(function(body) {
-        var imgs = body.objects[0].images;
-        var texts = body.objects[0].descriptions;
-        var items = helpers.mapImgsTextsToItems(imgs, texts);
+  // post an item in a user's closet
+  app.post('/items', function(req, res, next) {
+    Item
+    .query()
+    .insertAndFetch(req.body)
+    .then(function(item) { res.send(item); })
+    .catch(next);
+  }
 
-        if (items === null) {
-          return res.send(500);
-        } else {
-          res.json(items);
-        }
-      })
-      .catch(function(error) {
-        console.log('error', res.statusCode);
-        res.send(res.statusCode);
-      });
-    }
+  // remove an item in a user's closet
+  app.delete('/items/:itemId', function (req, res, next) {
+    User
+    .query()
+    .deleteById(req.params.itemId)
+    .then(function () { res.send({}); })
+    .catch(next);
   });
 }

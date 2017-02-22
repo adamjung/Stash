@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem } from 'react-bootstrap';
+import { Navbar, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import css from 'style.css';
 
+import HeaderBar from './HeaderBar.jsx';
 import StoreBar from './StoreBar.jsx';
 import ItemWindow from './ItemWindow.jsx';
+import Closet from './Closet.jsx';
+
+import logo from '../../../server/public/images/dungeondoor.png';
 
 export default class App extends Component {
   constructor(props) {
@@ -15,11 +18,10 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <Navbar>
-          <div className="title">Stash</div>
-        </Navbar>
+        <HeaderBar />
         <StoreBar />
         <ItemWindow />
+        <Closet />
       </div>
     );
   }
