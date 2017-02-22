@@ -35,7 +35,7 @@ app.use(function (err, req, res, next) {
 // routes
 const userRoutes = require('./routes/userRoutes.js')(app);
 const scrapeRoutes = require('./routes/scrapeRoutes.js')(app);
-// const closetRoutes = require('./routes/closetRoutes.js')(app);
+const closetRoutes = require('./routes/closetRoutes.js')(app);
 
 // start listening to requests on port 8000
 app.listen(app.get('port'), function() {

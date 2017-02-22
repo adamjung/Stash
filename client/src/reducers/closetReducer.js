@@ -4,6 +4,9 @@ export default function closet(state = {'show': false, 'items': []}, action) {
       return {'show': true, 'items': state.items};
     case 'HIDE_CLOSET':
       return {'show': false, 'items': state.items};
+    case 'LOAD_CLOSET':
+      return {'show': state.show,
+              'items': action.load}
     case 'ADD_TO_CLOSET':
       return {'show': state.show,
               'items': [...state.items, action.insert]};

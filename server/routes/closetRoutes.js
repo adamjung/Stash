@@ -18,7 +18,7 @@ module.exports = function(app) {
     .insertAndFetch(req.body)
     .then(function(item) { res.send(item); })
     .catch(next);
-  }
+  });
 
   // remove an item in a user's closet
   app.delete('/items/:itemId', function (req, res, next) {

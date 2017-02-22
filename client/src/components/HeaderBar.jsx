@@ -4,7 +4,6 @@ import { Navbar,
          ButtonGroup, 
          Button, 
          Image } from 'react-bootstrap';
-import axios from 'axios';
 import server from '../../config/serverInfo';
 import helpers from './utility/helpers'
 
