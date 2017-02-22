@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Navbar, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import server from '../../config/serverInfo';
 
+import helpers from './utility/helpers'
 import HeaderBar from './HeaderBar.jsx';
 import StoreBar from './StoreBar.jsx';
 import ItemWindow from './ItemWindow.jsx';
@@ -15,6 +18,22 @@ export default class App extends Component {
     super(props);
   }
 
+  componentWillMount(){
+    // If user is logged in, GET user's closet from server
+    let url = `${server.url}/items/${this.props.currentUser.id}`
+    axios.get(url)
+    .then(function(response) {
+      this.props.dispatch({
+        type: 'LOAD_CLOSET',
+        load: helpers.formatArrayIntoGrid(response.data, 4)
+      })
+    }.bind(this))
+    .catch(function(error) {
+      console.log('error during get to url', url);
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div className="app">
@@ -26,3 +45,9 @@ export default class App extends Component {
     );
   }
 }
+
+var mapStateToProps = function(state){
+  return {currentUser: state.user};
+};
+
+module.exports = connect(mapStateToProps)(App);

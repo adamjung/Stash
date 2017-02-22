@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Grid, Row, Col, Modal } from 'react-bootstrap';
 
-import { Modal } from 'react-bootstrap';
 import ItemEntry from './ItemEntry.jsx';
+import helpers from './utility/helpers'
 
 export default class Closet extends Component {
   constructor(props) {
@@ -19,14 +20,22 @@ export default class Closet extends Component {
     var body = (<div className="empty-closet-msg">Stash is Empty</div>);
     
     if (this.props.closet.items.length > 0) {
-      body = this.props.closet.items.map((item,index) => {
-        <ItemEntry details={item} key={index}/>
-      });
+      body = (<Grid>
+               {this.props.closet.items.map((row, rowIndex) =>
+                 <Row className="closetWindowRow" key={rowIndex}>
+                   {row.map((item, colIndex) =>
+                     <Col xs={3} md={3} className="closetWindowCol" key={colIndex}>
+                       <ItemEntry details={item}/>
+                     </Col>
+                   )}
+                 </Row>
+               )}
+             </Grid>);
     }
 
     return (
-      <Modal {...this.props} show={this.props.closet.show} 
-              onHide={this.hideModal} dialogClassName="custom-modal">
+      <Modal show={this.props.closet.show} 
+             onHide={this.hideModal} dialogClassName="custom-modal">
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg">Closet</Modal.Title>
         </Modal.Header>
