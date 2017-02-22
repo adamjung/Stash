@@ -1,4 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+body {
+  display:flex;
+  font-family: 'Roboto Mono';
+}
+
+.container {
+  width: 100%;
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-bar {
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  font-size: 225%;
+  align-items: center;
+}
+
+.titleText {
+  display: flex;
+  margin-left: 10px;
+}
+
+.closetText {
+  display: flex;
+  margin-right: 10px;
+  margin-left: auto;
+  font-size: 50%;
+  cursor: pointer;
+}
+
+.store-buttons {
+  margin-bottom: 15px;
+}
+
+.logo {
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
+
 .item-entry {
   border: 1px solid;
   border-color: #eee;
+  position: relative;
+}
+
+.item-hoverContent {
+  background: rgba(0,0,0,0.3);
+  color: white;
+  display: inline-block;
+  top: 0; right: 15; bottom: 0; left: 15;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+
+  /* for fade animation */
+   -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.item-textContent > div {
+  text-align: center;
+}
+
+.item-hoverContent:hover {
+  opacity: 1;
+}
+
+.button-buy-stash {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: white;
+  background: rgba(0,0,0,0.3);
+}
+
+.btn:focus {
+  outline: none;
 }

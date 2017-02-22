@@ -3,7 +3,7 @@ const Model = require('objection').Model;
 class Item extends Model {
   // Table name is the only required property.
   static get tableName() {
-    return 'Item';
+    return 'items';
   }
 
   // This object defines the relations to other models.
@@ -11,10 +11,10 @@ class Item extends Model {
     return {
       owner: {
         relation: Model.BelongsToOneRelation,
-        modelClass: __dirname + '/User',
+        modelClass: __dirname + '/UserModel',
         join: {
-          from: 'Item.userId',
-          to: 'User.id'
+          from: 'items.userId',
+          to: 'users.id'
         }
       }
     }

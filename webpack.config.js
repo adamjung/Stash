@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'client/dist'),
     filename: 'bundle.js',
+    publicPath: 'http://localhost:8080/',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
@@ -22,7 +23,7 @@ module.exports = {
     loaders: [
       { 
         test: /\.css$/, 
-        loaders: ['style-loader', 'css-loader'],
+        loaders: ["style-loader", "css-loader"],
         // include: /flexboxgrid/,
       },
       {
@@ -33,7 +34,11 @@ module.exports = {
       {
         test: /\.html$/,
         exclude: /node_modules/,
-        loader: "file?name=[name].[ext]",
+        loader: ["file-loader?name=[name].[ext]"],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i, 
+        loader: ["file-loader?name=[name].[ext]"]
       },
     ],
   },

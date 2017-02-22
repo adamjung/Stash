@@ -42,7 +42,7 @@ class StoreBar extends Component {
   render() {
     return (
       // REFACTOR BELOW FOR DRY CODE
-      <ButtonGroup justified>
+      <ButtonGroup className="store-buttons" justified>
         <ButtonGroup>
           <Button type="submit" className="storeBtn" onClick={() => (this.storeClick('haven'))}>Haven</Button>
         </ButtonGroup>

@@ -17,7 +17,7 @@ class ItemWindow extends Component {
     let windowItems = null;
 
     if (this.props.isLoading) {
-      loadingSpinner = (<Spinner spinnerName="circle" noFadeIn/>);
+      loadingSpinner = (<Spinner className="center" spinnerName="circle" noFadeIn/>);
       windowItems = null;
     } else {
       loadingSpinner = null;
