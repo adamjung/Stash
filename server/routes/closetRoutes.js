@@ -1,5 +1,6 @@
 const Item = require('../models/ItemModel');
 
+
 module.exports = function(app) {
   // for a user, get all their items
   app.get('/items/:userId', function(req, res, next) {
@@ -22,7 +23,7 @@ module.exports = function(app) {
 
   // remove an item in a user's closet
   app.delete('/items/:itemId', function (req, res, next) {
-    User
+    Item
     .query()
     .deleteById(req.params.itemId)
     .then(function () { res.send({}); })

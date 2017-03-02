@@ -25,7 +25,7 @@ export default class App extends Component {
     .then(function(response) {
       this.props.dispatch({
         type: 'LOAD_CLOSET',
-        load: helpers.formatArrayIntoGrid(response.data, 4)
+        load: response.data
       })
     }.bind(this))
     .catch(function(error) {
