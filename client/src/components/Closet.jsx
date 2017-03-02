@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Modal } from 'react-bootstrap';
 
-import ItemEntry from './ItemEntry.jsx';
+import ClosetItem from './ClosetItem.jsx';
 import helpers from './utility/helpers'
 
 export default class Closet extends Component {
@@ -18,14 +18,14 @@ export default class Closet extends Component {
 
   render() {
     var body = (<div className="empty-closet-msg">Stash is Empty</div>);
-    
-    if (this.props.closet.items.length > 0) {
+    var closetItems = helpers.formatArrayIntoGrid(this.props.closet.items, 4);
+    if (closetItems.length > 0) {
       body = (<Grid>
-               {this.props.closet.items.map((row, rowIndex) =>
+               {closetItems.map((row, rowIndex) =>
                  <Row className="closetWindowRow" key={rowIndex}>
                    {row.map((item, colIndex) =>
                      <Col xs={3} md={3} className="closetWindowCol" key={colIndex}>
-                       <ItemEntry details={item}/>
+                       <ClosetItem details={item} index={rowIndex*4+colIndex}/>
                      </Col>
                    )}
                  </Row>
