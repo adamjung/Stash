@@ -13,7 +13,7 @@ Model.knex(db);
 
 app.set('port', process.env.PORT || 8080);
 app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
-app.use(express.static(path.join(__dirname, 'public', 'images')));
+app.use(express.static(path.join(__dirname, './public/images')));
 
 // serve static files and lib modules
 app.use(express.static(path.join(__dirname, '../client/')));
