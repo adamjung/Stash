@@ -4,8 +4,8 @@
 # Compiled Dirs
 client/dist/
 
-# keys
-config/
+# config
+server/config/
 
 # NPM lib files
 node_modules/

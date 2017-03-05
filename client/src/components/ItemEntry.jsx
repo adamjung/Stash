@@ -19,7 +19,7 @@ export default class ItemEntry extends Component {
     var insert = Object.assign({}, this.props.details,
                                {userId: this.props.currentUser.id});
     // post item to server
-    let url = `${server.url}/items`;
+    let url = `/items`;
     axios.post(url, insert)
     .then(function(response) {
       this.props.dispatch({type: 'ADD_TO_CLOSET', insert: response.data});

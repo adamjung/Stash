@@ -19,7 +19,7 @@ export default class ItemEntry extends Component {
     // remove item from closet
     this.props.dispatch({type: 'REMOVE_FROM_CLOSET', index: this.props.index});
     // remove item from server
-    let url = `${server.url}/items/${this.props.details.id}`;
+    let url = `/items/${this.props.details.id}`;
     axios.delete(url)
     .catch(function(error) {
       console.log('error during delete to closet route', url);

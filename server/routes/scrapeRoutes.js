@@ -1,6 +1,6 @@
 const url = require('url');
-const dbot = require('../../config/diffbot.js');
-const newUrls = require('../../config/newProductUrlHash.js');
+const dbot = require('../config/diffbot.js');
+const newUrls = require('../config/newProductUrlHash.js');
 const request = require('request-promise');
 const helpers = require('./helpers/scrapeHelpers');
 

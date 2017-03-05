@@ -14,7 +14,7 @@ class StoreBar extends Component {
 
   storeClick(name, dispatch) {
     // if store is clicked, query the server for corresponding new items
-    var url = `${server.url}/newItems/${name}`;
+    var url = `/newItems/${name}`;
     
     // set loading state
     this.props.dispatch({ type: 'START_LOADING' });
