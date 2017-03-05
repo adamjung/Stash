@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'client/dist'),
     filename: 'bundle.js',
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'https://infinite-citadel-61750.herokuapp.com/',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
