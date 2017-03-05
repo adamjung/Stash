@@ -22,3 +22,8 @@ stash_dev/
 pids
 *.pid
 *.seed
+
+# Docker-related files
+Dockerfile
+.dockerignore
+docker-compose.yml
