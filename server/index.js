@@ -14,7 +14,7 @@ Model.knex(db);
 app.set('port', 8080);
 
 app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
-app.use(express.static(path.join(__dirname + '/public/images')));
+app.use(express.static(path.join(__dirname, 'public', 'images')));
 
 // serve static files and lib modules
 app.use(express.static(path.join(__dirname, '../client/')));
@@ -37,7 +37,7 @@ const userRoutes = require('./routes/userRoutes.js')(app);
 const scrapeRoutes = require('./routes/scrapeRoutes.js')(app);
 const closetRoutes = require('./routes/closetRoutes.js')(app);
 
-// start listening to requests on port 8000
+// start listening to requests on port
 app.listen(app.get('port'), function() {
   console.log('listening on', app.get('port'));
 });

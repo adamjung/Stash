@@ -20,7 +20,7 @@ export default class App extends Component {
 
   componentWillMount(){
     // If user is logged in, GET user's closet from server
-    let url = `${server.url}/items/${this.props.currentUser.id}`
+    let url = `/items/${this.props.currentUser.id}`
     axios.get(url)
     .then(function(response) {
       this.props.dispatch({
