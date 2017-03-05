@@ -2,7 +2,6 @@
 .DS_Store
 
 # Compiled Dirs
-client/dist/
 
 # config
 server/config/
