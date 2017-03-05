@@ -25,7 +25,7 @@ module.exports = {
       password: 'jmcmb'
     },
     migrations: {
-      directory: path.join(__dirname, '../migrations'),
+      directory: path.join(__dirname, 'migrations'),
     }
   }
 };
