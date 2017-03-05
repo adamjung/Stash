@@ -1,11 +1,19 @@
 const url = require('url');
 const dbot = require('../config/diffbot.js');
-const newUrls = require('../config/newProductUrlHash.js');
 const request = require('request-promise');
 const helpers = require('./helpers/scrapeHelpers');
 
+const newUrls = {
+  haven : "http://shop.havenshop.ca/collections/new-arrivals",
+  ssense : "https://www.ssense.com/en-us/men",
+  mrPorter : "https://www.mrporter.com/en-us/mens/whats-new",
+  antonioli : "https://www.antonioli.eu/en/US/men/section/new-arrivals",
+  maasandstacks : "https://maasandstacks.com/collections/all"
+};
+
 module.exports = function(app) {
   app.get('/newItems/:site', function(req, res, next) {
+    const dbotKey = dbot.DBK || process.env.DBOT_KEY;
     var site = req.params.site;
     var siteUrl = newUrls[site];
 
