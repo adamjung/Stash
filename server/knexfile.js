@@ -17,8 +17,13 @@ module.exports = {
     },
   },
   production: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
+    client: 'postgresql',
+    connection: {
+      host: process.env.DATABASE_URL,
+      database: 'heroku_stash_db',
+      user:     'jm',
+      password: 'jmcmb'
+    },
     migrations: {
       directory: path.join(__dirname, '../migrations'),
     }
