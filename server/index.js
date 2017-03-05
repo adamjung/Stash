@@ -12,6 +12,7 @@ const favicon = require('serve-favicon');
 Model.knex(db);
 
 app.set('port', process.env.PORT || 8080);
+console.log('port is', app.get('port'))
 app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public', 'images')));
 
