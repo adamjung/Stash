@@ -10,8 +10,6 @@ import StoreBar from './StoreBar.jsx';
 import ItemWindow from './ItemWindow.jsx';
 import Closet from './Closet.jsx';
 
-import logo from '../../../server/public/images/dungeondoor.png';
-
 export default class App extends Component {
   constructor(props) {
     // props contains store

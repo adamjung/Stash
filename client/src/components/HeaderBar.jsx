@@ -8,7 +8,7 @@ import server from '../../config/serverInfo';
 import helpers from './utility/helpers'
 
 import Closet from './Closet.jsx';
-import logo from '../../../server/public/images/dungeondoor.png';
+import logo from 'images/dungeondoor.png';
 
 class HeaderBar extends Component {
   constructor(props) {
