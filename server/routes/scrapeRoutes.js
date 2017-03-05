@@ -1,5 +1,5 @@
 const url = require('url');
-const dbot = require('../config/diffbot.js');
+// const dbot = require('../config/diffbot.js');
 const request = require('request-promise');
 const helpers = require('./helpers/scrapeHelpers');
 
@@ -13,7 +13,7 @@ const newUrls = {
 
 module.exports = function(app) {
   app.get('/newItems/:site', function(req, res, next) {
-    const dbotKey = dbot.DBK || process.env.DBOT_KEY;
+    var dbk = process.env.DBOT_KEY;
     var site = req.params.site;
     var siteUrl = newUrls[site];
 
@@ -21,7 +21,7 @@ module.exports = function(app) {
       return res.send(`${site}: is an unsupported/invalid website`);
     } else {
       var options = {
-        uri: `https://api.diffbot.com/v3/${site}?token=${dbot.DBK}&url=${siteUrl}`,
+        uri: `https://api.diffbot.com/v3/${site}?token=${dbk}&url=${siteUrl}`,
         json: true // Automatically parse JSON string in response 
       };
       request.get(options)
