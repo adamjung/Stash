@@ -6,13 +6,12 @@ module.exports = {
     client: 'postgresql',
     connection: {
       host : 'localhost',
-      port : '5432',
       user : 'TheWoo',
       password : 'fashcashstash',
       database : 'stash_dev'
     },
     migrations: {
-      directory: path.join(__dirname, '../migrations'),
+      directory: path.join(__dirname, 'migrations'),
       tableName: 'version'
     },
   },

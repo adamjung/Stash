@@ -1,7 +1,8 @@
-const url = require('url');
+// const url = require('url');
 // const dbot = require('../config/diffbot.js');
 const request = require('request-promise');
 const helpers = require('./helpers/scrapeHelpers');
+const ShopItem = require('../models/ShopItemModel');
 
 const newUrls = {
   haven : "http://shop.havenshop.ca/collections/new-arrivals",
@@ -13,7 +14,27 @@ const newUrls = {
 
 module.exports = function(app) {
   app.get('/newItems/:site', function(req, res, next) {
-    var dbk = process.env.DBOT_KEY;
+    ShopItem
+    .query()
+    .select('shop_items.id',
+            'shop_items.link',
+            'shop_items.image',
+            'shop_items.text',
+            'shop_items.brand',
+            'shop_items.price')
+    .where('shop', '=', req.params.site)
+    .then(function(items) {
+      res.json(items);
+    })
+    .catch(function(error) {
+      console.log('error', res.statusCode,error);
+      res.sendStatus(res.statusCode);
+    })
+  });
+
+  // scrape site and update entries in table
+  app.post('/newItems/:site', function(req, res, next) {
+    var dbk = process.env.DBOT_KEY; //|| dbot.DBK;
     var site = req.params.site;
     var siteUrl = newUrls[site];
 
@@ -33,12 +54,26 @@ module.exports = function(app) {
         if (items === null) {
           return res.send(500);
         } else {
-          res.json(items);
+          var insert = helpers.mapShopTextToItems(items, site);
+          // clear items in db
+          ShopItem
+          .query()
+          .delete()
+          .where('shop', '=', site)
+          .then(function(deleted) {
+            // post array of objects into db
+            ShopItem
+            .query()
+            .insert(insert)
+            .then(function(success) {
+              res.send(success);
+            })
+          })
         }
       })
       .catch(function(error) {
-        console.log('error', res.statusCode);
-        res.send(res.statusCode);
+        console.log('error', res.statusCode, error);
+        res.sendStatus(res.statusCode);
       });
     }
   });
