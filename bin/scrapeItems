@@ -12,6 +12,9 @@ for (let i = 0; i < newUrls; i++) {
     json: true
   }
   request.post(options)
+  .then(function(items) {
+    console.log('successful post for ', store);
+  })
   .catch(function(error) {
     console.log('unsuccessful post for ', store, error);
   });
