@@ -8,7 +8,7 @@ const newUrls = ['haven','ssense','mrPorter','antonioli','maasandstacks'];
 for (let i = 0; i < newUrls; i++) {
   let store = newUrls[i];
   let options = {
-    uri: `https://www.stash.digital/newItems/${store}`,
+    uri: `http://www.stash.digital/newItems/${store}`,
     json: true
   }
   request.post(options)
